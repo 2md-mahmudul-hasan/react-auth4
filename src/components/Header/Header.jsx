@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { userContext } from '../../authProvider/AuthProvidr';
 
 const Header = () => {
+  const user = useContext(userContext)
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -25,7 +27,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        <a className="btn">{user.disPlayname}</a>
       </div>
     </div>
   );

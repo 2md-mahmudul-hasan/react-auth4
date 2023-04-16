@@ -1,25 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { userContext } from '../../authProvider/AuthProvidr';
 
 const Login = () => {
+  const user = useContext(userContext)
+  const handleLogin = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password)
+  }
   return (
     <div className="hero min-h-screen bg-base-200">
+      <p> user is {user.displayname}</p>
       <div className="hero-content flex-col ">
         <div className="text-center ">
           <h1 className="text-5xl font-bold">Login now!</h1>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
+          <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
-              <label className="label">
+              <label id='email' className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input type="text" placeholder="email" className="input input-bordered" />
+              <input type="email" name='email' placeholder="email" className="input input-bordered" />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="text" placeholder="password" className="input input-bordered" />
+              <input type="text" name='password' placeholder="password" className="input input-bordered" />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
               </label>
@@ -27,7 +36,7 @@ const Login = () => {
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
