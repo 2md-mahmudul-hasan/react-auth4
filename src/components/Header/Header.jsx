@@ -23,6 +23,7 @@ const Header = () => {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/login'>Login</Link></li>
             <li><Link to='/register'>Register</Link></li>
+            <li><Link to='/orders'>Orders</Link></li>
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
@@ -32,6 +33,7 @@ const Header = () => {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/login'>Login</Link></li>
           <li><Link to='/register'>Register</Link></li>
+          <li><Link to='/orders'>Orders</Link></li>
         </ul>
       </div>
       <div className="navbar-end">
