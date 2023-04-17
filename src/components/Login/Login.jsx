@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { userContext } from '../../authProvider/AuthProvidr';
 
 const Login = () => {
-  const [user, setUser] = useState({})
-  const { signIn } = useContext(userContext)
+  const { signIn, user } = useContext(userContext)
+  console.log(user)
   const handleLogin = (e) => {
     e.preventDefault()
     const email = e.target.email.value;
@@ -19,7 +19,7 @@ const Login = () => {
   }
   return (
     <div className="hero min-h-screen bg-base-200">
-      <h2> user is {user.email}</h2>
+
       <div className="hero-content flex-col ">
         <div className="text-center ">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -28,6 +28,7 @@ const Login = () => {
           <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label id='email' className="label">
+                <h2> user is {user?.email}</h2>
                 <span className="label-text">Email</span>
               </label>
               <input type="email" name='email' placeholder="email" className="input input-bordered" />
