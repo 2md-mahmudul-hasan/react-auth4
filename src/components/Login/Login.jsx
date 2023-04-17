@@ -1,17 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { userContext } from '../../authProvider/AuthProvidr';
 
 const Login = () => {
-  const user = useContext(userContext)
+  const [user, setUser] = useState({})
+  const { signIn } = useContext(userContext)
   const handleLogin = (e) => {
     e.preventDefault()
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password)
+
+    signIn(email, password)
+      .then(user => {
+        const loginUser = user.user;
+        console.log(loginUser)
+        setUser(loginUser)
+      })
+      .catch(err => { err.message })
   }
   return (
     <div className="hero min-h-screen bg-base-200">
-      <p> user is {user.displayname}</p>
+      <h2> user is {user.email}</h2>
       <div className="hero-content flex-col ">
         <div className="text-center ">
           <h1 className="text-5xl font-bold">Login now!</h1>
