@@ -9,6 +9,7 @@ const auth = getAuth(app)
 
 const AuthProvidr = ({ children }) => {
   const [user, setUser] = useState(null)
+  const [loading, setLoding] = useState(true)
 
 
 
@@ -26,6 +27,7 @@ const AuthProvidr = ({ children }) => {
       // const getUser = signdInUser.email;
       setUser(signdInUser)
       console.log(signdInUser)
+      setLoding(false)
     });
     return () => { unsubscribe() }
   }, [])
@@ -39,7 +41,8 @@ const AuthProvidr = ({ children }) => {
     user,
     createuser,
     signIn,
-    logout
+    logout,
+    loading
   }
 
 

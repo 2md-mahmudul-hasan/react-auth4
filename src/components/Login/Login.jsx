@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { userContext } from '../../authProvider/AuthProvidr';
 
 const Login = () => {
@@ -12,8 +12,7 @@ const Login = () => {
     signIn(email, password)
       .then(user => {
         const loginUser = user.user;
-        console.log(loginUser)
-        setUser(loginUser)
+        e.target.reset()
       })
       .catch(err => { err.message })
   }
@@ -28,7 +27,6 @@ const Login = () => {
           <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label id='email' className="label">
-                <h2> user is {user?.email}</h2>
                 <span className="label-text">Email</span>
               </label>
               <input type="email" name='email' placeholder="email" className="input input-bordered" />
